@@ -1,4 +1,4 @@
-# 🎓 Student Management System
+# StudentResourceHub
 
 A modern, dark-themed web application for managing student records with CRUD operations, XML data display, and real-time chat functionality.
 
