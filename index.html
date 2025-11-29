@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Notes & PYQ Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f0f0f;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            color: #ffffff;
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        header nav ul li a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a[aria-current="page"] {
+            color: #ffd93d;
+        }
+
+        .login-btn {
+            color: #ffffff !important;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-btn {
+            background: #ffd93d;
+            color: #0f0f0f !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #888888;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #ffd93d;
+            color: #0f0f0f;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(255, 217, 61, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* App Icons Showcase */
+        .app-showcase {
+            padding: 3rem 0;
+            overflow: hidden;
+        }
+
+        .app-icons {
+            display: flex;
+            gap: 1rem;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Features Grid */
+        .features {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #888888;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-card .btn {
+            background: rgba(255, 217, 61, 0.1);
+            color: #ffd93d;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 217, 61, 0.2);
+        }
+
+        .feature-card .btn:hover {
+            background: rgba(255, 217, 61, 0.2);
+        }
+
+        /* Registration Section */
+        .registration-section {
+            max-width: 500px;
+            margin: 4rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+
+        .registration-section h2 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .registration-section label {
+            display: block;
+            margin-top: 1.2rem;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .registration-section input[type="text"],
+        .registration-section input[type="email"],
+        .registration-section input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #ffffff;
+            transition: all 0.3s;
+        }
+
+        .registration-section input:focus {
+            outline: none;
+            border-color: #ffd93d;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .registration-section input[type="submit"] {
+            width: 100%;
+            margin-top: 2rem;
+            padding: 0.9rem;
+            background: #ffd93d;
+            color: #0f0f0f;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .registration-section input[type="submit"]:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            text-align: center;
+            color: #666666;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            header nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .registration-section {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" style="font-size:1.5rem; color:#ffd93d;">📚</a></li>
+                <li><a href="#" aria-current="page">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="read_users.php">Users</a></li>
+                <li><a href="students_xml.php">XML</a></li>
+                <li><a href="chat.php">Chat</a></li>
+            </ul>
+            <ul>
+                <li><a href="#register" class="login-btn">Login</a></li>
+                <li><a href="#register" class="cta-btn">Try It Free</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span>👥</span>
+                <span>Supporting over 100,000+ students worldwide</span>
+            </div>
+            <h1>Unlock Academic Excellence<br>with Smart Study Resources</h1>
+            <p>Explore comprehensive notes, previous year question papers, and interactive tools from leading educational platforms.</p>
+            <div class="hero-buttons">
+                <a href="#register" class="btn-primary">Get Started Free</a>
+                <a href="#features" class="btn-secondary">Explore Features</a>
+            </div>
+        </section>
+
+        <!-- App Icons Showcase -->
+        <div class="app-showcase">
+            <div class="app-icons">
+                <div class="app-icon">📚</div>
+                <div class="app-icon">📝</div>
+                <div class="app-icon">💬</div>
+                <div class="app-icon">🗄️</div>
+                <div class="app-icon">📄</div>
+                <div class="app-icon">🎓</div>
+                <div class="app-icon">📊</div>
+                <div class="app-icon">🔍</div>
+                <div class="app-icon">📚</div>
+                <div class="app-icon">📝</div>
+                <div class="app-icon">💬</div>
+                <div class="app-icon">🗄️</div>
+                <div class="app-icon">📄</div>
+                <div class="app-icon">🎓</div>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <section class="features" id="features">
+            <div class="feature-card">
+                <div class="feature-icon">📒</div>
+                <h3>Comprehensive Notes</h3>
+                <p>Access detailed notes for all subjects, updated regularly for each semester. Study smart with organized content.</p>
+                <a href="#" class="btn">View Notes</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Previous Year Papers</h3>
+                <p>Practice with PYQ papers and solutions to ace your exams. Learn from past patterns and improve scores.</p>
+                <a href="#" class="btn">View PYQ</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Discussion Forum</h3>
+                <p>Discuss doubts with peers, share knowledge, and collaborate. Real-time chat for instant help.</p>
+                <a href="chat.php" class="btn">Open Chat</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🗄️</div>
+                <h3>User Management</h3>
+                <p>Complete CRUD system for managing student records. Create, read, update, and delete with ease.</p>
+                <a href="users_index.php" class="btn">Manage Users</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>XML Data Display</h3>
+                <p>View structured student data transformed using XSLT. Learn XML, DTD, and modern web technologies.</p>
+                <a href="students_xml.php" class="btn">View XML</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure Access</h3>
+                <p>Password-protected accounts with secure authentication. Your data is safe with encryption.</p>
+                <a href="#register" class="btn">Register Now</a>
+            </div>
+        </section>
+
+        <section class="registration-section" id="register" aria-labelledby="register-heading">
+            <h2 id="register-heading">Register</h2>
+            <form name="regForm" action="process.php" method="post" onsubmit="return validateForm()" novalidate> <!-- action changed to process.php -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required autocomplete="name">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password">
+
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="new-password">
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required pattern="\d{10}" autocomplete="tel">
+
+                <input type="submit" value="Register">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 College Notes Hub | Designed by Jagdish</p>
+    </footer>
+
+    <script src="registration.js"></script>
+
+</body>
+</html>

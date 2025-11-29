@@ -1,0 +1,24 @@
+# Database credentials (if you have a separate config)
+config.php
+
+# Chat messages (user-generated content)
+messages.json
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.bak
+*~

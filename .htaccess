@@ -1,0 +1,24 @@
+# .htaccess
+# Apache Configuration for Project Directory
+
+# Set default index file
+DirectoryIndex index.html index.php
+
+# Enable directory browsing (optional)
+Options +Indexes
+
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect root folder to index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^$ index.html [L]
+
+# Set UTF-8 encoding
+AddDefaultCharset UTF-8
+
+# Enable GZIP compression (improves performance)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>

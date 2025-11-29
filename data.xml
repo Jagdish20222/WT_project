@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="data.xsl"?>
+<!DOCTYPE students SYSTEM "data.dtd">
+
+
+<students>
+    <student>
+        <name>Rahul Sharma</name>
+        <roll>101</roll>
+        <email>rahul.sharma@college.edu</email>
+    </student>
+    
+    <student>
+        <name>Priya Patel</name>
+        <roll>102</roll>
+        <email>priya.patel@college.edu</email>
+    </student>
+    
+    <student>
+        <name>Amit Kumar</name>
+        <roll>103</roll>
+        <email>amit.kumar@college.edu</email>
+    </student>
+    
+    <student>
+        <name>Sneha Reddy</name>
+        <roll>104</roll>
+        <email>sneha.reddy@college.edu</email>
+    </student>
+    
+    <student>
+        <name>Arjun Singh</name>
+        <roll>105</roll>
+        <email>arjun.singh@college.edu</email>
+    </student>
+</students>
